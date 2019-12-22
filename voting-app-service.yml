@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: voting-service
+  labels:
+    name: voting-service
+    app: demo-voting-app
+spec:
+  # By default, type is ClusterIP type are only available within the cluster
+  # to enable the service to be accessible outside the cluster.
+  # we must set type is LoadBalancer
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80
+  selector: # Define selector to filter labels => name, app in voting-app-pod.yml
+    name: voting-app-pod
+    app: demo-voting-app
