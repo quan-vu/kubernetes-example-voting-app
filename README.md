@@ -2,6 +2,25 @@
 
 In this tutorial, we will demo a Voting application on Google Kubernetes Engine.
 
+**Definition**
+
+- Pod is internal.
+- Service is external.
+- To create a service from pod must config selector attributes match with labels: name, app which is defined in pod.
+
+**Architecture**
+
+remember that the services should be named based on what the other application is looking for
+
+**postgres-service.yml**
+Kind: Service
+Service name: db OR database
+
+```shell
+name: db 
+
+```
+
 TODO
 [x] 1. Setup a Google Container Engine Environtment
 [x] 2. Create Kubernetes PODS
@@ -42,25 +61,3 @@ kubectl get services
 Final, open external ip on your browser: http://34.66.203.83.
 
 We will se the first piece of my or the first component of our application is up and running and the load balancer has been configured successfully.
-
-## Basic knowledge
-
-#### Pod
-
-Pod is internal.
-
-#### Service
-
-Service is external.
-
-To create a service from pod must use selector attribue with labels: name, app which is defined in pod.
-
-**postgres-service.yml**
-
-Kind: Service
-Service name: db OR database
-
-```shell
-name: db # remember that the services should be named based on what the other application is looking for
-
-```
